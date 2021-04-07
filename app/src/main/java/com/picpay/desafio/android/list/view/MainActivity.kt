@@ -10,19 +10,21 @@ import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
+import com.picpay.desafio.android.datalocal.UserDAO
+import com.picpay.desafio.android.datalocal.UserRepositoryLocal
 import com.picpay.desafio.android.list.adapter.UserListAdapter
 import com.picpay.desafio.android.model.User
-import com.picpay.desafio.android.repository.PicPayRepository
-import com.picpay.desafio.android.viewmodel.PicPayLocalViewModel
+
 import com.picpay.desafio.android.viewmodel.PicPayViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var adapter: UserListAdapter
-    private lateinit var _viewModel: PicPayViewModel
+    private val _viewModel : PicPayViewModel by viewModel()
 
     private var _listUsers = mutableListOf<User>()
 
@@ -37,8 +39,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        viewModelProvider()
-
         progressBar.visibility = View.VISIBLE
         getListUsers()
     }
@@ -52,13 +52,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 exibirLista(it)
             }
         }
-    }
-
-    private fun viewModelProvider() {
-        _viewModel = ViewModelProvider(
-            this,
-            PicPayViewModel.PicPayViewModelFactory(PicPayRepository())
-        ).get(PicPayViewModel::class.java)
     }
 
     private fun exibirLista(lista: List<User>) {

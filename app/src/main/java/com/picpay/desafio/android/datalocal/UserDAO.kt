@@ -11,7 +11,10 @@ interface UserDAO {
     suspend fun saveUser(userEntity: UserEntity)
 
     @Query("SELECT * FROM UserData WHERE idUser = :idUser")
-    suspend fun getUsers(idUser: String): List<UserEntity>
+    suspend fun getUserByID(idUser: String): List<UserEntity>
+
+    @Query("SELECT * FROM UserData")
+    suspend fun getUsers(): List<UserEntity>
 
     @Query("DELETE FROM UserData WHERE idUser = :idUser")
     suspend fun deleteUser(idUser: Int)

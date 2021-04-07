@@ -30,11 +30,13 @@ buildscript {
         rxandroid_version = "2.1.1"
         core_ktx_test_version = "1.2.0"
         room_version = "2.2.6"
+        koin_version = "2.0.1"
     }
 
     repositories {
         google()
         jcenter()
+        mavenCentral()
 
     }
     dependencies {
@@ -49,6 +51,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
 
     }
 }
