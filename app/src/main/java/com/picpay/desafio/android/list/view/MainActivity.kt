@@ -5,13 +5,10 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
-import com.picpay.desafio.android.datalocal.UserDAO
-import com.picpay.desafio.android.datalocal.UserRepositoryLocal
 import com.picpay.desafio.android.list.adapter.UserListAdapter
 import com.picpay.desafio.android.model.User
 
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var adapter: UserListAdapter
-    private val _viewModel : PicPayViewModel by viewModel()
+    val _viewModel : PicPayViewModel by viewModel()
 
     private var _listUsers = mutableListOf<User>()
 
@@ -61,11 +58,5 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        getListUsers()
     }
 }

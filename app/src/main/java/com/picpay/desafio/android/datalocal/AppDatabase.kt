@@ -14,18 +14,4 @@ import org.koin.core.error.InstanceCreationException
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDAO() : UserDAO
 
-    companion object {
-        private var INSTANCE: AppDatabase? = null
-
-        fun getDatabase(context: Context) : AppDatabase {
-            if(INSTANCE == null) {
-                INSTANCE = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "userdata"
-                ).build()
-            }
-            return INSTANCE!!
-        }
-    }
 }

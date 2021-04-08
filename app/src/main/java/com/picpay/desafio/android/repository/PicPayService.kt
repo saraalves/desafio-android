@@ -7,12 +7,7 @@ import retrofit2.http.GET
 
 interface PicPayService {
 
-    @GET("users")
+    @GET("tests/mobdev/users")
     suspend fun getUsers(): List<User>
 
-    companion object {
-        val Service: PicPayService by lazy {
-            NetworkUtils.getRetrofit().create(PicPayService::class.java)
-        }
-    }
 }
