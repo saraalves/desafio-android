@@ -12,8 +12,6 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-// ele vai iniciar o koin, pegando o contexto da aplicação, e vai injetar um por um
-// no cenario que precisamos por baixo dos panos ele tá criando a instancia do reposiroto
         startKoin {
             androidContext(this@App)
             modules(
