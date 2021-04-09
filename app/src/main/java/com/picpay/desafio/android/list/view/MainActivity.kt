@@ -57,6 +57,5 @@ class MainActivity : AppCompatActivity() {
             _listUsers.addAll(lista)
             adapter.notifyDataSetChanged()
         }
-
     }
 }
